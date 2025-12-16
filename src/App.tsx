@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import "./index.css"
 
 type person = {
 
   name: string;
-  message: string
+  message: string;
 }
 
 
@@ -31,27 +32,61 @@ const data: person[] = [
 
 function App() {
 
+  const [personinfo, setPersoninfor] = useState<person[]>(data);
   return (
     <>
-      <p>In the name of Allah</p>
 
-      <Main />
+
+      <Main getinfo={personinfo} />
 
     </>
   )
 }
 
 
-function Main() {
-  return (<><p><Left />
+function Main({ getinfo }: any) {
+  return (<><p>
+
+    <Left takeinfo={getinfo} />
     <Right /> </p></>)
 }
 
-function Left() {
-  return (<><p>Left plateform </p></>)
+function Left({ takeinfo }: any) {
+
+  const [col, setCol] = useState({ "backgroundcolor": "blue" })
+  function changeBackgroundColor() {
+    setCol({ "backgroundcolor": "green" })
+
+  }
+
+  return (<>
+    <ul>
+
+      <li style={{ "backgroundColor": "lightyellow", "display": "inline-block", "border": "red" }} onClick={changeBackgroundColor}>{takeinfo.map((el: any) => <PersonInfo elobject={el}
+
+      />)}</li>
+    </ul>
+
+
+  </>
+  )
 }
 
 function Right() {
-  return (<><p>Right plateform </p></>)
+  return (<div style={{ "backgroundColor": "lightyellow", "display": "inline-block" }}><p>Right plateform </p></div>)
 }
+
+function PersonInfo({ elobject }: any) {
+
+  return (<>
+    <div className='listitem'>
+      <span>{elobject.name}</span></div>
+    <span style={{ "fontSize": "10px" }}>{elobject.message}</span>
+    <button className='list_btn'>Add</button></>)
+
+}
+
+
+
+
 export default App

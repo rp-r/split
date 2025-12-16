@@ -1,0 +1,15 @@
+.listitem {
+
+    font-family: 'Courier New', Courier, monospace;
+    color: red;
+    font-weight: bold;
+}
+
+.list_btn {
+
+    color: blue;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-style: normal;
+}
