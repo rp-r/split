@@ -1,35 +1,57 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+type person = {
+
+  name: string;
+  message: string
+}
+
+
+
+const data: person[] = [
+
+
+  {
+    name: "Clark",
+    message: "You own Clark 7 Euro"
+  },
+
+  {
+    name: "Sarah",
+    message: "Sarah owns your  9 Euro"
+  },
+
+  {
+    name: "Anthony",
+    message: "You and Anthony are even"
+  }
+
+
+]
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p>In the name of Allah</p>
+
+      <Main />
+
     </>
   )
 }
 
+
+function Main() {
+  return (<><p><Left />
+    <Right /> </p></>)
+}
+
+function Left() {
+  return (<><p>Left plateform </p></>)
+}
+
+function Right() {
+  return (<><p>Right plateform </p></>)
+}
 export default App
