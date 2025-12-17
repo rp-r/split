@@ -58,57 +58,39 @@ const data: person[] = [
 
 function App() {
 
-  const [personinfo, setPersoninfor] = useState<person[]>(data);
+  const [personinfo, setPersoninfor] = useState<Friend[]>(initialFriends);
   return (
-    <>
-
-
-      <Main getinfo={personinfo} />
-
-    </>
+    <div className='app'>
+      <div className='sidebar'></div>
+      <FriendList />
+    </div>
   )
 }
 
+function FriendList() {
 
-function Main({ getinfo }: any) {
-  return (<><p>
-
-    <Left takeinfo={getinfo} />
-    <Right /> </p></>)
-}
-
-function Left({ takeinfo }: any) {
-
-  const [col, setCol] = useState({ "backgroundcolor": "blue" })
-  function changeBackgroundColor() {
-    setCol({ "backgroundcolor": "green" })
-
-  }
-
-  return (<>
+  const friends = initialFriends
+  return (<div>
     <ul>
-
-      <li style={{ "backgroundColor": "lightyellow", "display": "inline-block", "border": "red" }} onClick={changeBackgroundColor}>{takeinfo.map((el: any) => <PersonInfo elobject={el}
-
-      />)}</li>
+      {friends.map((friend) => <Friend friend={friend} />)}
     </ul>
 
-
-  </>
+  </div>
   )
 }
 
-function Right() {
-  return (<div style={{ "backgroundColor": "lightyellow", "display": "inline-block" }}><p>Right plateform </p></div>)
-}
 
-function PersonInfo({ elobject }: any) {
+
+
+
+function Friend({ friend }: any) {
 
   return (<>
-    <div className='listitem'>
-      <span>{elobject.name}</span></div>
-    <span style={{ "fontSize": "10px" }}>{elobject.message}</span>
-    <button className='list_btn'>Add</button></>)
+    <div>
+      <span>{friend.name}</span></div>
+    <img src={friend.image} alt={friend.name} />
+    <p> you have balance of {friend.balance}</p>
+    <button className='button'>Add</button></>)
 
 }
 
